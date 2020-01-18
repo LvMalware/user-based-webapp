@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<!-- I hate web development -->
+
+<html>
+    
+    <head>
+
+        <title> Register an account </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/registration.css">
+
+    </head>
+
+    <body>
+
+        <div class="top_bar">
+            <p class="site_title"> SITE TITLE </p>
+        </div>
+
+        <form action="registration.php" method="POST">
+            <table>
+                <tr>
+                    <th>
+                        Email:
+                    </th>
+                    <td>
+                        <input name="email_address"   type="email">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        First name:
+                    </th>
+                    <td>
+                        <input name="first_name" type="text">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        Last name:
+                    </th>
+                    <td>
+                        <input name="last_name"  type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Username:
+                    </th>
+                    <td>
+                        <input name="username" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Password:
+                    </th>
+                    <td>
+                        <input name="password" type="password">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Confirm:
+                    </th>
+                    <td>
+                        <input name="confirm" type="password">    
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input name="bt_submit" type="submit" value="Confirm">
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </form>
+
+    </body>
+
+    <script>
+        var error = window.location.href.match(/\?error\=(\d)/);
+        if(error)
+        {
+            var code = error[0].match(/(\d)/)[0];
+            switch (code)
+            {
+                case "0":
+                    alert('Invalid email!');
+                    break;
+                case "1":
+                    alert('Username already exists!');
+                    break;
+                case "2":
+                    alert("Passwords doesn't match!");
+                    break;
+                case "3":
+                    alert('Email already in use!');
+                    break;
+                case "4":
+                    alert("Password is too short!");
+                    break;
+                case "5":
+                    alert("Username is too short!");
+                    break;
+            }
+        }
+    </script>
+    
+</html>
