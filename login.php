@@ -1,11 +1,14 @@
 <?php
-    
-    class SQLiteDB extends SQLite3
+
+    require "utils.php";
+
+    session_start();
+    remove_duplicate_cookies();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
     {
-        function __construct()
-        {
-            $this->open("db/mydatabase.db");
-        }
+        header("location: home.php");
+        exit;
     }
 
     if (isset($_POST['bt_login']))
@@ -28,7 +31,7 @@
         $user_info = $sqlite->querySingle(
             "SELECT * FROM users WHERE `username` = '$username'
                                     AND `password` = '$password';",
-            TRUE
+            true
         );
         
         if ($user_info)
@@ -38,15 +41,19 @@
                 "UPDATE users
                  SET `last_login` = datetime('now')
                  WHERE `id` = '$id';");
-            echo "You're logged. ";
-            echo "But there's nothing more to see for now... sorry :p<br>";
-            foreach ($user_info as $key => $value)
-            {
-                echo "<p> $key: $value </p>";
-            }
+            
+            session_start();
+            remove_duplicate_cookies();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            $_SESSION['id']       = $id;
+
+            $sqlite->close();
+            header("location: home.php");
         }
         else
         {
+            $sqlite->close();
             header("Location: login.html?error=2");
         }
     }

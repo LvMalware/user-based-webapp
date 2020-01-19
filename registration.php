@@ -2,13 +2,8 @@
     /*
      * PHP looks a little like Perl... I like that :)
      */
-    class SQLiteDB extends SQLite3
-    {
-        function __construct()
-        {
-            $this->open("db/mydatabase.db");
-        }
-    }
+    
+    require "utils.php";
 
     if (isset($_POST['bt_submit']))
     {
