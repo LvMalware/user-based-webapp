@@ -1,5 +1,7 @@
 <?php
-
+    /*
+     * PHP looks a little like Perl... I like that :)
+     */
     class SQLiteDB extends SQLite3
     {
         function __construct()
@@ -43,7 +45,7 @@
             $sqlite->busyTimeout(5000);
             $sqlite->exec("PRAGMA journal_mode=WAL;");
             $result = $sqlite->query(
-                "SELECT * FROM users where username = '$username';"
+                "SELECT * FROM users where `username` = '$username';"
             );
             
             if ($result->fetchArray())
@@ -52,7 +54,7 @@
             }
 
             $result = $sqlite->query(
-                "SELECT * FROM users where email = '$email_addr';"
+                "SELECT * FROM users where `email` = '$email_addr';"
             );
 
             if ($result->fetchArray())
@@ -62,19 +64,19 @@
             
             $result = $sqlite->exec(
                 "INSERT INTO users (
-                    first_name,
-                    last_name,
-                    email,
-                    username,
-                    password,
-                    last_login
+                    `first_name`,
+                    `last_name`,
+                    `email`,
+                    `username`,
+                    `password`,
+                    `last_login`
                 ) VALUES (
                     '$first_name',
                     '$last_name',
                     '$email_addr',
                     '$username',
                     '$password',
-                    datetime(now)
+                    'never'
                 );"
             );
 
