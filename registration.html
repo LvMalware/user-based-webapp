@@ -70,6 +70,22 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>
+                        Security Question:
+                    </th>
+                    <td>
+                        <input name="s_question" type="text">    
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Answer:
+                    </th>
+                    <td>
+                        <input name="s_answer" type="text">    
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <input name="bt_submit" type="submit" value="Confirm">
                     </td>
@@ -105,6 +121,12 @@
                     break;
                 case "5":
                     alert("Username is too short!");
+                    break;
+                case "6":
+                    alert("Invalid security question!");
+                    break;
+                case "7":
+                    alert("Invalid Answer!");
                     break;
             }
         }
