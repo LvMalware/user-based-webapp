@@ -29,6 +29,8 @@
         ?>
         <div class="bottom_menu">
             <a href="logout.php"> Log out </a>
+            <br>
+            <a href="change_password.php"> Change Password </a>
         </div>
     </body>
 </html>
